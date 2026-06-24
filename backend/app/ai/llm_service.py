@@ -10,6 +10,7 @@ Top Careers:
 3. Data Analyst
 4. Full Stack Developer
 5. Cloud Engineer
+6. DevOps Engineer
 """
 
     # Interview Questions
