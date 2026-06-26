@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from prompts.career_prompt import career_prompt
+from app.utils.prompts import career_prompt
 
 router = APIRouter(
     prefix="/career",

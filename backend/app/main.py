@@ -1,9 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.database.base import Base
+from app.database.db import engine
+
+# Import models
+from app.models.user import User
+
 # Import routers (you will create these)
-from routes.interview_routes import router as interview_router
-from routes.career_routes import router as career_router
+from app.routes.interview_routes import router as interview_router
+from app.routes.career_routes import router as career_router
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="CareerGPT API",

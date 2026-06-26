@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from app.database.base import Base
+
 from sqlalchemy import (
     Column,
     Integer,
@@ -7,26 +9,16 @@ from sqlalchemy import (
     DateTime
 )
 
-from database import Base
-
 
 class User(Base):
     __tablename__ = "users"
 
-    # Primary Key
-    id = Column(
-        Integer,
-        primary_key=True,
-        index=True
-    )
+    id = Column(Integer, primary_key=True, index=True)
 
-    # Personal Information
-    full_name = Column(
-        String(100),
-        nullable=False
-    )
+    full_name = Column(String(100), nullable=False)
 
-    email = Column(
-        String(255),
-        unique=True,
-       
+    email = Column(String(255), unique=True, nullable=False)
+
+    password = Column(String(255), nullable=False)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
