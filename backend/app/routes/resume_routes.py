@@ -1,6 +1,8 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from pydantic import BaseModel
 from typing import Dict, List
+from app.database.db import SessionLocal
+from app.models.resume import Resume
 import uuid
 
 from app.services.resume_service import (
@@ -73,6 +75,20 @@ async def analyze_resume(resume_id: str):
         raise HTTPException(status_code=404, detail="Resume not found")
 
     analysis = analyze_resume_text(resume["content"])
+    db = SessionLocal()
+    new_resume = Resume(
+        user_id=1,
+        resume_title=resume["filename"],
+        resume_text=resume["content"],
+        target_role="Software Developer",
+        ats_score=analysis["ats_score"],
+        strengths=str(analysis["strengths"]),
+        improvement_areas=str(analysis["improvements"])
+        )
+    db.add(new_resume)
+    db.commit()
+    db.refresh(new_resume)
+    db.close()
 
     return AnalysisResponse(
         resume_id=resume_id,

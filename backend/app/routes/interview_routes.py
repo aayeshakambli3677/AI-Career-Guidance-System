@@ -1,6 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from app.services.ai_service import generate_response
+from app.database.db import SessionLocal
+from app.models.interview import Interview
 
 router = APIRouter(
     prefix="/interview",
@@ -120,6 +122,22 @@ async def evaluate_answer(data: AnswerEvaluation):
 
     try:
         response = generate_response(prompt)
+        db = SessionLocal()
+
+        new_interview = Interview(
+            user_id=1,
+            interview_type="technical",
+            career_domain=data.role,
+            experience_level="Fresher",
+            question=data.question,
+            user_answer=data.answer,
+            feedback=response,
+            score=8
+            )
+        db.add(new_interview)
+        db.commit()
+        db.refresh(new_interview)
+        db.close()
 
         return {
             "success": True,
