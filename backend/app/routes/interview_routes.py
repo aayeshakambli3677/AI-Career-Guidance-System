@@ -145,12 +145,19 @@ async def hr_questions():
     with short sample answers.
     """
 
-    response = generate_response(prompt)
+    try:
+        response = generate_response(prompt)
 
-    return {
-        "success": True,
-        "questions": response
-    }
+        return {
+            "success": True,
+            "questions": response
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
 
 
 # =========================
@@ -165,13 +172,20 @@ async def technical_questions(role: str):
     for {role} with answers.
     """
 
-    response = generate_response(prompt)
+    try:
+        response = generate_response(prompt)
 
-    return {
-        "success": True,
-        "role": role,
-        "questions": response
-    }
+        return {
+            "success": True,
+            "role": role,
+            "questions": response
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
 
 
 # =========================
@@ -192,10 +206,17 @@ async def interview_tips(role: str):
     - Common Mistakes
     """
 
-    response = generate_response(prompt)
+    try:
+        response = generate_response(prompt)
 
-    return {
-        "success": True,
-        "role": role,
-        "tips": response
-    }
+        return {
+            "success": True,
+            "role": role,
+            "tips": response
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )

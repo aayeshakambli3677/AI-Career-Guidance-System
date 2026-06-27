@@ -52,7 +52,7 @@ def health():
 # =========================
 # INCLUDE ROUTES
 # =========================
-app.include_router(interview_router, prefix="/interview", tags=["Interview"])
+app.include_router(interview_router)
 app.include_router(career_router, prefix="/career", tags=["Career"])
 app.include_router(user_router)
 app.include_router(resume_router)
