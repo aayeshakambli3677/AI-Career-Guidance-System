@@ -11,6 +11,7 @@ from app.models.user import User
 from app.routes.interview_routes import router as interview_router
 from app.routes.career_routes import router as career_router
 from app.routes.user_routes import router as user_router
+from app.routes.resume_routes import router as resume_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -54,6 +55,7 @@ def health():
 app.include_router(interview_router, prefix="/interview", tags=["Interview"])
 app.include_router(career_router, prefix="/career", tags=["Career"])
 app.include_router(user_router)
+app.include_router(resume_router)
 
 # =========================
 # STARTUP EVENT

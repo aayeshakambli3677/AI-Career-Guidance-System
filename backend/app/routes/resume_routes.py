@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Dict, List
 import uuid
 
-from services.resume_service import (
+from app.services.resume_service import (
     extract_text_from_file,
     analyze_resume_text
 )
