@@ -9,7 +9,7 @@ from sqlalchemy import (
     ForeignKey,
 )
 
-from database import Base
+from app.database.base import Base
 
 
 class Resume(Base):
