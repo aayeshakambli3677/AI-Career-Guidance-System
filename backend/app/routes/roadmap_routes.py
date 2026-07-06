@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 from typing import List, Dict
 import uuid
 
-from services.roadmap_service import generate_roadmap
+from app.services.roadmap_generator import generate_roadmap
 
 router = APIRouter(
     prefix="/roadmap",

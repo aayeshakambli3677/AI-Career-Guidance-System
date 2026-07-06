@@ -1,23 +1,27 @@
 from app.ai.llm_service import generate_response
 
-
-def generate_roadmap(career: str) -> str:
-    """
-    Generate learning roadmap.
-    """
-
+def generate_roadmap(
+    career_goal,
+    skills,
+    level
+):
     prompt = f"""
-    Create a detailed roadmap for becoming a:
+    Create roadmap for:
 
-    {career}
+    Career Goal: {career_goal}
+    Current Skills: {skills}
+    Experience Level: {level}
 
-    Include:
-
-    1. Skills to learn
-    2. Projects to build
-    3. Certifications
-    4. Timeline
-    5. Interview preparation strategy
+    Give:
+    1. Learning Steps
+    2. Resources
+    3. Estimated Duration
     """
 
-    return generate_response(prompt)
+    response = generate_response(prompt)
+
+    return {
+        "steps": [response],
+        "resources": ["YouTube", "Coursera", "Documentation"],
+        "estimated_duration": "6 Months"
+    }
