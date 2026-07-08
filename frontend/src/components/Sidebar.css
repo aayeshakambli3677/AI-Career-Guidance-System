@@ -39,3 +39,17 @@
     background: #2563eb;
     color: white;
 }
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 12px 0;
+}
+
+.sidebar-menu li a {
+    display: block;
+    text-decoration: none;
+}

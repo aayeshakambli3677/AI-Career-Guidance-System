@@ -8,37 +8,41 @@ function Sidebar() {
             <h2 className="logo">CareerGPT</h2>
 
             <nav>
-                <NavLink to="/dashboard">
-                    🏠 Dashboard
-                </NavLink>
+                <nav>
+                    <ul className="sidebar-menu">
+                        <li>
+                            <NavLink to="/dashboard">🏠 Dashboard</NavLink>
+                        </li>
 
-                <NavLink to="/profile">
-                    👤 Profile
-                </NavLink>
+                        <li>
+                            <NavLink to="/profile">👤 Profile</NavLink>
+                        </li>
 
-                <NavLink to="/career">
-                    🎯 Career Guidance
-                </NavLink>
+                        <li>
+                            <NavLink to="/career">🎯 Career Guidance</NavLink>
+                        </li>
 
-                <NavLink to="/resume">
-                    📄 Resume Analyzer
-                </NavLink>
+                        <li>
+                            <NavLink to="/resume">📄 Resume Analyzer</NavLink>
+                        </li>
 
-                <NavLink to="/interviewPreparation">
-                    🎤 Mock Interview
-                </NavLink>
+                        <li>
+                            <NavLink to="/interviewPreparation">🎤 Mock Interview</NavLink>
+                        </li>
 
-                <NavLink to="/roadmap">
-                    🛣 Career Roadmap
-                </NavLink>
+                        <li>
+                            <NavLink to="/roadmap">🛣 Career Roadmap</NavLink>
+                        </li>
 
-                <NavLink to="/skills">
-                    💡 Skill Recommendation
-                </NavLink>
+                        <li>
+                            <NavLink to="/skills">💡 Skill Recommendation</NavLink>
+                        </li>
 
-                <NavLink to="/settings">
-                    ⚙ Settings
-                </NavLink>
+                        <li>
+                            <NavLink to="/settings">⚙ Settings</NavLink>
+                        </li>
+                    </ul>
+                </nav>
 
             </nav>
 
