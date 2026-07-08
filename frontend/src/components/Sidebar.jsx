@@ -24,7 +24,7 @@ function Sidebar() {
                     📄 Resume Analyzer
                 </NavLink>
 
-                <NavLink to="/interview">
+                <NavLink to="/interviewPreparation">
                     🎤 Mock Interview
                 </NavLink>
 

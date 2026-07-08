@@ -1,13 +1,11 @@
-import "./Login.css";
+import "./login.css";
 
 function Login() {
   return (
     <div className="login-page">
       <div className="login-container">
 
-        <h1 className="logo">
-          CareerGPT
-        </h1>
+        <h1 className="logo">CareerGPT</h1>
 
         <p className="tagline">
           AI Powered Career Guidance System

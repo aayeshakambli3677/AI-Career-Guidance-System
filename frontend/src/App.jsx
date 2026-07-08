@@ -9,7 +9,7 @@ import Career from "./pages/Career";
 import ResumeAnalysis from "./pages/ResumeAnalysis";
 import InterviewPreparation from "./pages/InterviewPreparation";
 import Roadmap from "./pages/Roadmap";
-import login from "./pages/login";
+import Login from "./pages/Login";
 import CareerReCommendation from "./pages/careerRecommendation";
 import IntershipRecommendation from "./pages/InternshipRecommendation";
 import Notfound from "./pages/Notfound";
@@ -17,6 +17,7 @@ import Register from "./pages/Register";
 import ResumeUpload from "./pages/ResumeUpload";
 import SkillGapAnalysis from "./pages/SkillGapAnalysis";
 import Resume from "./pages/Resume";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -33,6 +34,20 @@ function App() {
           <Route path="/resume" element={<Resume />} />
           <Route path="/interviewPreparation" element={<InterviewPreparation />} />
           <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/resumeUpload" element={<ResumeUpload />} />
+          <Route
+  path="/skills"
+  element={<SkillGapAnalysis />}
+/>
+          <Route
+  path="/interviewPreparation"
+  element={<InterviewPreparation />}
+/>
+<Route
+  path="/settings"
+  element={<Settings />}
+/>
 
         </Route>
 
@@ -40,7 +55,7 @@ function App() {
         {/* Login/Register pages */}
         <Route element={<AuthLayout />}>
 
-          <Route path="/" element={<h1>Login Page</h1>} />
+          <Route path="/" element={<Login />} />
 
         </Route>
 

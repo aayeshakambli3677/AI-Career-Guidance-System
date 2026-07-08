@@ -1,9 +1,23 @@
+import { useState } from "react";
+
 function ResumeUpload() {
-    return (
-        <div>
-            <h1>Resume Upload Page</h1>
-        </div>
-    );
+
+  const [file, setFile] = useState(null);
+
+  return (
+    <div>
+
+      <input
+        type="file"
+        onChange={(e) => setFile(e.target.files[0])}
+      />
+
+      <button>
+        Upload Resume
+      </button>
+
+    </div>
+  );
 }
 
 export default ResumeUpload;
