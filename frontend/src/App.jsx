@@ -1,7 +1,53 @@
-import AppRoutes from "./routes/AppRoutes";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import MainLayout from "./layouts/MainLayout";
+import AuthLayout from "./layouts/AuthLayout";
+
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Career from "./pages/Career";
+import ResumeAnalysis from "./pages/ResumeAnalysis";
+import InterviewPreparation from "./pages/InterviewPreparation";
+import Roadmap from "./pages/Roadmap";
+import login from "./pages/login";
+import CareerReCommendation from "./pages/careerRecommendation";
+import IntershipRecommendation from "./pages/InternshipRecommendation";
+import Notfound from "./pages/Notfound";
+import Register from "./pages/Register";
+import ResumeUpload from "./pages/ResumeUpload";
+import SkillGapAnalysis from "./pages/SkillGapAnalysis";
+import Resume from "./pages/Resume";
 
 function App() {
-  return <AppRoutes />;
+  return (
+    <BrowserRouter>
+
+      <Routes>
+
+        {/* Pages with Sidebar */}
+        <Route element={<MainLayout />}>
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/interviewPreparation" element={<InterviewPreparation />} />
+          <Route path="/roadmap" element={<Roadmap />} />
+
+        </Route>
+
+
+        {/* Login/Register pages */}
+        <Route element={<AuthLayout />}>
+
+          <Route path="/" element={<h1>Login Page</h1>} />
+
+        </Route>
+
+      </Routes>
+
+    </BrowserRouter>
+  );
 }
 
 export default App;

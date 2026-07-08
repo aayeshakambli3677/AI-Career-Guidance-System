@@ -1,0 +1,44 @@
+.dashboard-container {
+    min-height: 100vh;
+    display: flex;
+    background: #f5f7fb;
+}
+
+.sidebar {
+    width: 250px;
+    background: #1e293b;
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    color: #fff;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.page-title {
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
