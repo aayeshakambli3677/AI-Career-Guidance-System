@@ -23,7 +23,7 @@ function Sidebar() {
                         </li>
 
                         <li>
-                            <NavLink to="/resume">📄 Resume Analyzer</NavLink>
+                            <NavLink to="/resume">📄 Resume Analysis</NavLink>
                         </li>
 
                         <li>

@@ -36,18 +36,19 @@ function App() {
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/register" element={<Register />} />
           <Route path="/resumeUpload" element={<ResumeUpload />} />
+          <Route path="/resume-analysis" element={<ResumeAnalysis />} />
           <Route
-  path="/skills"
-  element={<SkillGapAnalysis />}
-/>
+            path="/skills"
+            element={<SkillGapAnalysis />}
+          />
           <Route
-  path="/interviewPreparation"
-  element={<InterviewPreparation />}
-/>
-<Route
-  path="/settings"
-  element={<Settings />}
-/>
+            path="/interviewPreparation"
+            element={<InterviewPreparation />}
+          />
+          <Route
+            path="/settings"
+            element={<Settings />}
+          />
 
         </Route>
 

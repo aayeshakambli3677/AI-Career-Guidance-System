@@ -1,26 +1,44 @@
-import "../styles/dashboard.css";
-
+import "../styles/Dashboard.css";
 function Dashboard() {
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-page">
 
-      <div className="sidebar">
-        <h2>CareerGPT</h2>
+      <h1>Welcome to CareerGPT Dashboard</h1>
 
-        <ul>
-          <li>Career Advice</li>
-          <li>Roadmap</li>
-          <li>Interview</li>
-          <li>Resume</li>
-        </ul>
-      </div>
+      <p>
+        Get personalized career guidance and improve your skills.
+      </p>
 
-      <div className="main-content">
-        <h1>Dashboard</h1>
+      <div className="dashboard-cards">
 
-        <div className="card">
-          Welcome User
+        <div className="dashboard-card">
+          <h2>Career Recommendation</h2>
+          <p>
+            Explore career paths based on your skills and interests.
+          </p>
         </div>
+
+        <div className="dashboard-card">
+          <h2>Resume Analysis</h2>
+          <p>
+            Upload and analyze your resume to improve it.
+          </p>
+        </div>
+
+        <div className="dashboard-card">
+          <h2>Interview Preparation</h2>
+          <p>
+            Practice interview questions and improve confidence.
+          </p>
+        </div>
+
+        <div className="dashboard-card">
+          <h2>Skill Roadmap</h2>
+          <p>
+            Follow a personalized learning roadmap.
+          </p>
+        </div>
+
       </div>
 
     </div>

@@ -1,9 +1,7 @@
-function Resume() {
+function ResumeAnalysis() {
     return (
-        <div>
-            <h1>Resume Page</h1>
-        </div>
+        <h1>Resume Analysis Page</h1>
     );
 }
 
-export default Resume;
+export default ResumeAnalysis;
