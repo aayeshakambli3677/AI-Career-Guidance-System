@@ -3,21 +3,35 @@ import { generateQuestions } from "../services/interviewService";
 import "../styles/InterviewPreparation.css";
 
 function InterviewPreparation() {
+
   const [questions, setQuestions] = useState("");
 
   const handleInterview = async () => {
-    const result = await generateQuestions();
-    setQuestions(result.questions);
+
+    try {
+
+      const result = await generateQuestions({
+        role: "Software Developer",
+        experience_level: "Fresher"
+      });
+
+      console.log(result);
+
+      setQuestions(
+  result.questions ||
+  result.response ||
+  JSON.stringify(result, null, 2)
+);
+
+    } catch(error) {
+      console.error(error);
+    }
   };
 
   return (
     <div className="interview-container">
 
       <h1>Mock Interview</h1>
-
-      <p>
-        Click the button below to generate AI interview questions.
-      </p>
 
       <button
         className="generate-btn"
@@ -28,8 +42,9 @@ function InterviewPreparation() {
 
       {questions && (
         <div className="questions-box">
-          <h2>Interview Questions</h2>
-          <pre>{questions}</pre>
+          <div style={{ whiteSpace: "pre-wrap" }}>
+  {questions}
+</div>
         </div>
       )}
 

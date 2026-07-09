@@ -18,6 +18,7 @@ import ResumeUpload from "./pages/ResumeUpload";
 import SkillGapAnalysis from "./pages/SkillGapAnalysis";
 import Resume from "./pages/Resume";
 import Settings from "./pages/Settings";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
           <Route path="/resume" element={<ResumeAnalysis />} />
           <Route path="/interviewPreparation" element={<InterviewPreparation />} />
           <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/register" element={<Register />} />
+          
           <Route path="/resumeUpload" element={<ResumeUpload />} />
           <Route path="/resume-analysis" element={<ResumeAnalysis />} />
           <Route
@@ -50,6 +51,11 @@ function App() {
             element={<Settings />}
           />
 
+          <Route
+  path="/edit-profile"
+  element={<EditProfile />}
+/>
+
         </Route>
 
 
@@ -57,6 +63,7 @@ function App() {
         <Route element={<AuthLayout />}>
 
           <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
         </Route>
 

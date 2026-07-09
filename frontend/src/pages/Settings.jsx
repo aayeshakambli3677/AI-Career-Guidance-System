@@ -1,48 +1,42 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Settings.css";
 
 function Settings() {
-  const [name, setName] = useState("Sneha Birajdar");
-  const [email, setEmail] = useState("sneha@email.com");
-  const [password, setPassword] = useState("");
 
-  const handleSave = () => {
-    alert("Settings saved successfully!");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+
+    localStorage.removeItem("token");
+
+    alert("Logged Out Successfully");
+
+    navigate("/");
   };
 
   return (
     <div className="settings-page">
+
       <h1>Settings</h1>
 
       <div className="settings-card">
-        <h2>Profile Information</h2>
 
-        <label>Name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <h2>Application Settings</h2>
 
-        <label>Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label>Change Password</label>
-        <input
-          type="password"
-          placeholder="Enter new password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button onClick={handleSave}>
-          Save Changes
+        <button>
+          Dark Mode
         </button>
+
+        <button>
+          Notifications
+        </button>
+
+        <button onClick={handleLogout}>
+          Logout
+        </button>
+
       </div>
+
     </div>
   );
 }

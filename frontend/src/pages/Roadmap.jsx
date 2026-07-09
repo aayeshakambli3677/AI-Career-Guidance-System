@@ -6,7 +6,7 @@ function Roadmap() {
   const [careerGoal, setCareerGoal] = useState("");
   const [skills, setSkills] = useState("");
   const [experience, setExperience] = useState("Fresher");
-  const [roadmap, setRoadmap] = useState("");
+  const [roadmap, setRoadmap] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -28,11 +28,7 @@ function Roadmap() {
         experience_level: experience,
       });
 
-      setRoadmap(
-        typeof result === "string"
-          ? result
-          : JSON.stringify(result, null, 2)
-      );
+      setRoadmap(result);
     } catch (err) {
       console.error(err);
       setError("Failed to generate roadmap.");
@@ -75,10 +71,39 @@ function Roadmap() {
       {error && <p className="error">{error}</p>}
 
       {roadmap && (
-        <div className="roadmap-result">
-          <pre>{roadmap}</pre>
-        </div>
-      )}
+  <div className="roadmap-result">
+
+    <h2>Career Goal</h2>
+    <p>{roadmap.career_goal}</p>
+
+    <h2>Roadmap Steps</h2>
+
+    <ul>
+      {roadmap.steps?.map((step, index) => (
+        <li key={index}>
+          {step}
+        </li>
+      ))}
+    </ul>
+
+    <h2>Resources</h2>
+
+    <ul>
+      {roadmap.resources?.map((resource, index) => (
+        <li key={index}>
+          {resource}
+        </li>
+      ))}
+    </ul>
+
+    <h2>Duration</h2>
+
+    <p>
+      {roadmap.estimated_duration}
+    </p>
+
+  </div>
+)}
     </div>
   );
 }

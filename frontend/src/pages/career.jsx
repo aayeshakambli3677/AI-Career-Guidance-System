@@ -7,24 +7,20 @@ function Career() {
   const [result, setResult] = useState("");
 
   const handleSubmit = async () => {
-    if (userInput.trim() === "") {
-      alert("Please enter your skills and interests.");
-      return;
-    }
+    const response = await getCareerAdvice({
+  user_input: userInput,
+  profile: {
+    skills: ["Java", "SQL"],
+  },
+});
 
-    try {
-      const response = await getCareerAdvice({
-        user_input: userInput,
-        profile: {
-          skills: ["Java", "SQL"],
-        },
-      });
+console.log(response);
 
-      setResult(response);
-    } catch (error) {
-      console.error(error);
-      setResult("Something went wrong! Please try again.");
-    }
+setResult(
+  response.response ||
+  response.advice ||
+  JSON.stringify(response, null, 2)
+);
   };
 
   return (
@@ -61,11 +57,9 @@ function Career() {
 
             <h2>🎯 AI Recommendation</h2>
 
-            {typeof result === "string" ? (
-              <p>{result}</p>
-            ) : (
-              <pre>{JSON.stringify(result, null, 2)}</pre>
-            )}
+            <pre>
+  {result.response || JSON.stringify(result, null, 2)}
+</pre>
 
           </div>
         )}

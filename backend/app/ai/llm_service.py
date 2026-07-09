@@ -1,46 +1,84 @@
 def generate_response(prompt: str) -> str:
+
     prompt = prompt.lower()
 
-    # Career Recommendation
-    if "career" in prompt:
+    # Career Advice
+    if "career counselor" in prompt or "best career options" in prompt:
         return """
-Top Careers:
-1. Python Developer
-2. Java Developer
-3. Data Analyst
-4. Full Stack Developer
-5. Cloud Engineer
-6. DevOps Engineer
-7.backend devloper
+Recommended Careers:
 
-"""
+1. Java Developer
+2. Python Developer
+3. Full Stack Developer
+4. Software Engineer
 
-    # Interview Questions
-    if "interview" in prompt or "questions" in prompt:
-        return """
-1. What is OOP?
-2. What is difference between list and tuple?
-3. Explain SQL joins
-4. What is API?
-5. What is exception handling?
+Required Skills:
+- Java
+- SQL
+- Spring Boot
+- React
+- Git
+
+Projects:
+- Student Management System
+- CareerGPT
+- E-commerce Website
+
+Final Advice:
+Focus on Java Full Stack Development and build projects.
 """
 
     # Roadmap
-    if "roadmap" in prompt:
+    elif "roadmap" in prompt:
         return """
-Step 1: HTML, CSS
-Step 2: JavaScript
-Step 3: React
-Step 4: Backend (Python/Java)
-Step 5: Database (SQL)
+Month 1:
+Learn Java Fundamentals
+
+Month 2:
+Learn SQL & Database
+
+Month 3:
+Learn Spring Boot
+
+Month 4:
+Build Backend Projects
+
+Month 5:
+Learn React
+
+Month 6:
+Interview Preparation & Resume Building
 """
 
-    # Resume analysis
-    if "resume" in prompt:
+    # Interview
+    elif "interview" in prompt or "questions" in prompt:
         return """
-Strengths: Basic programming knowledge
-Weakness: Missing Git, DSA, Projects
-ATS Score: 72/100
+1. What is OOP?
+2. Difference between ArrayList and LinkedList?
+3. What is JDBC?
+4. Explain Exception Handling.
+5. What is Spring Boot?
+6. What is REST API?
+7. Difference between GET and POST?
+8. What is SQL Join?
+9. What is Polymorphism?
+10. Tell me about yourself.
 """
 
-    return "AI service running in mock mode"
+    # Resume
+    elif "resume" in prompt:
+        return """
+ATS Score: 82/100
+
+Strengths:
+- Java
+- SQL
+- Projects
+
+Improvements:
+- Add GitHub Link
+- Add Internship Details
+- Improve Resume Formatting
+"""
+
+    return "AI Service Running Successfully"

@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from app.utils.prompts import career_prompt
 from app.database.db import SessionLocal
 from app.models.recommendation import Recommendation
+from app.services.ai_service import generate_response
 
 router = APIRouter(
     prefix="/career",
@@ -25,6 +26,7 @@ def get_career_advice(request: CareerRequest):
     profile = request.profile or {}
 
     prompt = career_prompt(request.user_input, profile)
+    ai_response = generate_response(prompt)
     db = SessionLocal()
     new_rec = Recommendation(
         user_id=1,
@@ -42,7 +44,7 @@ def get_career_advice(request: CareerRequest):
         "type": "career_advice",
         "input": request.user_input,
         "profile": profile,
-        "response": prompt
+        "response": ai_response
     }
 
 # -------------------------

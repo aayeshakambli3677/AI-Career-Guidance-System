@@ -1,5 +1,10 @@
 import "../styles/Dashboard.css";
+import { useNavigate } from "react-router-dom";
+
 function Dashboard() {
+
+  const navigate = useNavigate();
+
   return (
     <div className="dashboard-page">
 
@@ -11,31 +16,43 @@ function Dashboard() {
 
       <div className="dashboard-cards">
 
-        <div className="dashboard-card">
+        <div
+          className="dashboard-card"
+          onClick={() => navigate("/career")}
+        >
           <h2>Career Recommendation</h2>
           <p>
             Explore career paths based on your skills and interests.
           </p>
         </div>
 
-        <div className="dashboard-card">
+        <div
+          className="dashboard-card"
+          onClick={() => navigate("/resume")}
+        >
           <h2>Resume Analysis</h2>
           <p>
-            Upload and analyze your resume to improve it.
+            Upload and analyze your resume.
           </p>
         </div>
 
-        <div className="dashboard-card">
+        <div
+          className="dashboard-card"
+          onClick={() => navigate("/interviewPreparation")}
+        >
           <h2>Interview Preparation</h2>
           <p>
-            Practice interview questions and improve confidence.
+            Practice interview questions.
           </p>
         </div>
 
-        <div className="dashboard-card">
+        <div
+          className="dashboard-card"
+          onClick={() => navigate("/roadmap")}
+        >
           <h2>Skill Roadmap</h2>
           <p>
-            Follow a personalized learning roadmap.
+            Follow a personalized roadmap.
           </p>
         </div>
 
