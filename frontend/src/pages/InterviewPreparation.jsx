@@ -1,28 +1,37 @@
 import { useState } from "react";
 import { generateQuestions } from "../services/interviewService";
+import "../styles/InterviewPreparation.css";
 
 function InterviewPreparation() {
-
   const [questions, setQuestions] = useState("");
 
   const handleInterview = async () => {
-
-    const result = await generateQuestions({
-      role: "Software Developer",
-      experience_level: "Fresher"
-    });
-
-    setQuestions(result);
+    const result = await generateQuestions();
+    setQuestions(result.questions);
   };
 
   return (
-    <div>
+    <div className="interview-container">
 
-      <button onClick={handleInterview}>
+      <h1>Mock Interview</h1>
+
+      <p>
+        Click the button below to generate AI interview questions.
+      </p>
+
+      <button
+        className="generate-btn"
+        onClick={handleInterview}
+      >
         Generate Questions
       </button>
 
-      <pre>{questions}</pre>
+      {questions && (
+        <div className="questions-box">
+          <h2>Interview Questions</h2>
+          <pre>{questions}</pre>
+        </div>
+      )}
 
     </div>
   );

@@ -15,7 +15,7 @@ router = APIRouter(
     tags=["Resume Management"]
 )
 
-# In-memory DB (replace with real DB later)
+# Temporary In-Memory Storage
 RESUME_DB: Dict[str, dict] = {}
 
 
@@ -41,27 +41,31 @@ class AnalysisResponse(BaseModel):
 # =========================
 @router.post("/upload", response_model=ResumeResponse)
 async def upload_resume(file: UploadFile = File(...)):
-    if not file.filename.endswith((".pdf", ".docx")):
-        raise HTTPException(
-            status_code=400,
-            detail="Only PDF and DOCX files are supported"
+    try:
+        if not file.filename.endswith((".pdf", ".docx")):
+            raise HTTPException(
+                status_code=400,
+                detail="Only PDF and DOCX files are supported"
+            )
+
+        resume_id = str(uuid.uuid4())
+
+        content = extract_text_from_file(file)
+
+        RESUME_DB[resume_id] = {
+            "filename": file.filename,
+            "content": content
+        }
+
+        return ResumeResponse(
+            resume_id=resume_id,
+            filename=file.filename,
+            message="Resume uploaded successfully"
         )
 
-    resume_id = str(uuid.uuid4())
-
-    # FIX 1: removed unsafe await (assuming sync function)
-    content = extract_text_from_file(file)
-
-    RESUME_DB[resume_id] = {
-        "filename": file.filename,
-        "content": content
-    }
-
-    return ResumeResponse(
-        resume_id=resume_id,
-        filename=file.filename,
-        message="Resume uploaded successfully"
-    )
+    except Exception as e:
+        print("UPLOAD ERROR:", e)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # =========================
@@ -69,34 +73,53 @@ async def upload_resume(file: UploadFile = File(...)):
 # =========================
 @router.get("/analyze/{resume_id}", response_model=AnalysisResponse)
 async def analyze_resume(resume_id: str):
+
     resume = RESUME_DB.get(resume_id)
 
     if not resume:
-        raise HTTPException(status_code=404, detail="Resume not found")
-
-    analysis = analyze_resume_text(resume["content"])
-    db = SessionLocal()
-    new_resume = Resume(
-        user_id=1,
-        resume_title=resume["filename"],
-        resume_text=resume["content"],
-        target_role="Software Developer",
-        ats_score=analysis["ats_score"],
-        strengths=str(analysis["strengths"]),
-        improvement_areas=str(analysis["improvements"])
+        raise HTTPException(
+            status_code=404,
+            detail="Resume not found"
         )
-    db.add(new_resume)
-    db.commit()
-    db.refresh(new_resume)
-    db.close()
 
-    return AnalysisResponse(
-        resume_id=resume_id,
-        ats_score=analysis["ats_score"],
-        feedback=analysis["feedback"],
-        strengths=analysis["strengths"],
-        improvements=analysis["improvements"]
-    )
+    try:
+
+        analysis = analyze_resume_text(resume["content"])
+
+        db = SessionLocal()
+
+        new_resume = Resume(
+            user_id=1,
+            resume_title=resume["filename"],
+            resume_text=resume["content"],
+            target_role="Software Developer",
+            ats_score=analysis["ats_score"],
+            strengths=str(analysis["strengths"]),
+            improvement_areas=str(analysis["improvements"])
+        )
+
+        db.add(new_resume)
+        db.commit()
+        db.refresh(new_resume)
+
+        db.close()
+
+        return AnalysisResponse(
+            resume_id=resume_id,
+            ats_score=analysis["ats_score"],
+            feedback=analysis["feedback"],
+            strengths=analysis["strengths"],
+            improvements=analysis["improvements"]
+        )
+
+    except Exception as e:
+
+        print("DATABASE ERROR:", e)
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
 
 
 # =========================
@@ -104,10 +127,14 @@ async def analyze_resume(resume_id: str):
 # =========================
 @router.get("/{resume_id}")
 async def get_resume(resume_id: str):
+
     resume = RESUME_DB.get(resume_id)
 
     if not resume:
-        raise HTTPException(status_code=404, detail="Resume not found")
+        raise HTTPException(
+            status_code=404,
+            detail="Resume not found"
+        )
 
     return {
         "resume_id": resume_id,

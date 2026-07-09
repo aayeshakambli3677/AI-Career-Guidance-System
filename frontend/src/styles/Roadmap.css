@@ -1,0 +1,82 @@
+/* Roadmap.css */
+
+.roadmap-page {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.roadmap-page h1 {
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 25px;
+}
+
+.roadmap-page input,
+.roadmap-page select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.roadmap-page input:focus,
+.roadmap-page select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.roadmap-page button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.roadmap-page button:hover {
+    background-color: #1d4ed8;
+}
+
+.roadmap-page button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.error {
+    color: red;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.roadmap-result {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.roadmap-result h2 {
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.roadmap-result pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.6;
+    font-size: 15px;
+    color: #333;
+}
