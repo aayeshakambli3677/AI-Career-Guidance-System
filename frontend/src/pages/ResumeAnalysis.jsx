@@ -51,8 +51,8 @@ function ResumeAnalysis() {
 
     return (
         <div className="resume-page">
-            <h1 style={{ color: "red", fontSize: "50px" }}>
-                THIS IS MY RESUME PAGE
+            <h1 style={{ color: "black", fontSize: "50px" }}>
+                THIS IS MY RESUME PAGE 📄
             </h1>
 
             <p>
