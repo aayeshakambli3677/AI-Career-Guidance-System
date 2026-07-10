@@ -51,3 +51,24 @@
 .settings-card button:hover {
     background: #1d4ed8;
 }
+
+/* Dark Mode */
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .settings-page {
+    background-color: #121212;
+}
+
+body.dark-mode .settings-card {
+    background-color: #1f1f1f;
+    color: white;
+}
+
+body.dark-mode button {
+    background-color: #333;
+    color: white;
+}

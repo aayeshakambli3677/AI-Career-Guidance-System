@@ -1,9 +1,46 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/Settings.css";
+import { useState, useEffect } from "react";
 
 function Settings() {
 
   const navigate = useNavigate();
+
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("darkMode") === "true"
+  );
+
+  const [notifications, setNotifications] = useState(
+    localStorage.getItem("notifications") !== "false"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem("notifications", notifications);
+  }, [notifications]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const toggleNotifications = () => {
+    setNotifications(!notifications);
+
+    alert(
+      !notifications
+        ? "Notifications Enabled"
+        : "Notifications Disabled"
+    );
+  };
 
   const handleLogout = () => {
 
@@ -23,12 +60,14 @@ function Settings() {
 
         <h2>Application Settings</h2>
 
-        <button>
-          Dark Mode
+        <button onClick={toggleDarkMode}>
+          {darkMode ? "☀ Light Mode" : "🌙 Dark Mode"}
         </button>
 
-        <button>
-          Notifications
+        <button onClick={toggleNotifications}>
+          {notifications
+            ? "🔔 Notifications ON"
+            : "🔕 Notifications OFF"}
         </button>
 
         <button onClick={handleLogout}>
