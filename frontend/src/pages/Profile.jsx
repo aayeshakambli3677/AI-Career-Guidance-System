@@ -18,7 +18,7 @@ function Profile() {
                 <div className="profile-image">
 
                     <img
-                        src="/profile.png"
+                        src="/Profile.png"
                         alt="Profile"
                     />
 

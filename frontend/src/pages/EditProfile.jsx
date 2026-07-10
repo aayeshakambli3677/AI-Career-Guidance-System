@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./EditProfile.css";
 
 function EditProfile() {
 
@@ -27,56 +28,55 @@ function EditProfile() {
   };
 
   return (
-    <div style={{ padding: "30px" }}>
+  <div className="edit-profile-page">
+
+    <div className="edit-profile-card">
 
       <h1>Edit Profile</h1>
 
       <input
+        type="text"
         value={name}
-        onChange={(e)=>setName(e.target.value)}
-        placeholder="Name"
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter Name"
       />
 
-      <br /><br />
-
       <input
+        type="email"
         value={email}
-        onChange={(e)=>setEmail(e.target.value)}
-        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter Email"
       />
 
-      <br /><br />
-
       <input
+        type="text"
         value={education}
-        onChange={(e)=>setEducation(e.target.value)}
+        onChange={(e) => setEducation(e.target.value)}
         placeholder="Education"
       />
 
-      <br /><br />
-
       <input
+        type="text"
         value={skills}
-        onChange={(e)=>setSkills(e.target.value)}
+        onChange={(e) => setSkills(e.target.value)}
         placeholder="Skills"
       />
 
-      <br /><br />
-
       <input
+        type="text"
         value={careerGoal}
-        onChange={(e)=>setCareerGoal(e.target.value)}
+        onChange={(e) => setCareerGoal(e.target.value)}
         placeholder="Career Goal"
       />
-
-      <br /><br />
 
       <button onClick={handleSave}>
         Save Changes
       </button>
 
     </div>
-  );
+
+  </div>
+);
 }
 
 export default EditProfile;
