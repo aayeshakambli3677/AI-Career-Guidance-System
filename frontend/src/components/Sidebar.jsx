@@ -41,10 +41,13 @@ function Sidebar() {
                         <li>
                             <NavLink to="/internships"> 💼 Internship Recommendation</NavLink>
                         </li>
-
+                        <NavLink to="/progress">
+                            📈 Progress Tracker
+                        </NavLink>
                         <li>
                             <NavLink to="/settings">⚙ Settings</NavLink>
                         </li>
+
                     </ul>
                 </nav>
 

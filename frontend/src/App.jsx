@@ -20,7 +20,7 @@ import Resume from "./pages/Resume";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
 import InternshipRecommendation from "./pages/InternshipRecommendation";
-
+import ProgressTracker from "./pages/ProgressTracker";
 function App() {
   return (
     <BrowserRouter>
@@ -36,13 +36,13 @@ function App() {
           <Route path="/resume" element={<ResumeAnalysis />} />
           <Route path="/interviewPreparation" element={<InterviewPreparation />} />
           <Route path="/roadmap" element={<Roadmap />} />
-          
+          <Route path="/progress" element={<ProgressTracker />} />
           <Route path="/resumeUpload" element={<ResumeUpload />} />
           <Route path="/resume-analysis" element={<ResumeAnalysis />} />
           <Route
-  path="/internships"
-  element={<InternshipRecommendation />}
-/>
+            path="/internships"
+            element={<InternshipRecommendation />}
+          />
           <Route
             path="/skills"
             element={<SkillGapAnalysis />}
@@ -57,9 +57,9 @@ function App() {
           />
 
           <Route
-  path="/edit-profile"
-  element={<EditProfile />}
-/>
+            path="/edit-profile"
+            element={<EditProfile />}
+          />
 
         </Route>
 
