@@ -101,24 +101,22 @@ async def mock_interview(data: InterviewRequest):
 async def evaluate_answer(data: AnswerEvaluation):
 
     prompt = f"""
-    Evaluate the following interview answer.
+Evaluate this answer.
 
-    Role:
-    {data.role}
+Role: {data.role}
 
-    Question:
-    {data.question}
+Question: {data.question}
 
-    Candidate Answer:
-    {data.answer}
+Answer: {data.answer}
 
-    Give:
-    1. Score out of 10
-    2. Strengths
-    3. Weaknesses
-    4. Improvement Suggestions
-    5. Better Sample Answer
-    """
+Provide:
+
+1. Score out of 10
+2. Strengths
+3. Weaknesses
+4. Improvement Suggestions
+5. Better Sample Answer
+"""
 
     try:
         response = generate_response(prompt)

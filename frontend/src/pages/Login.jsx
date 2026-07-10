@@ -48,6 +48,10 @@ function Login() {
           AI Powered Career Guidance System
         </p>
 
+        <p className="hero-text">
+  Discover careers, improve skills, and prepare for your future.
+</p>
+
         <h2>Login</h2>
 
         <input
