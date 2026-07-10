@@ -19,6 +19,7 @@ import SkillGapAnalysis from "./pages/SkillGapAnalysis";
 import Resume from "./pages/Resume";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
+import InternshipRecommendation from "./pages/InternshipRecommendation";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
           
           <Route path="/resumeUpload" element={<ResumeUpload />} />
           <Route path="/resume-analysis" element={<ResumeAnalysis />} />
+          <Route
+  path="/internships"
+  element={<InternshipRecommendation />}
+/>
           <Route
             path="/skills"
             element={<SkillGapAnalysis />}

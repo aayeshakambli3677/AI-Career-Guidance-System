@@ -39,6 +39,10 @@ function Sidebar() {
                         </li>
 
                         <li>
+                            <NavLink to="/internships"> 💼 Internship Recommendation</NavLink>
+                        </li>
+
+                        <li>
                             <NavLink to="/settings">⚙ Settings</NavLink>
                         </li>
                     </ul>

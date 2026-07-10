@@ -2,33 +2,28 @@ def generate_response(prompt):
 
     prompt = prompt.lower()
 
-    # Career Advice
-    if "career" in prompt:
+    # Internship
+    if "internship" in prompt:
         return """
-Recommended Careers:
+Recommended Internships:
 
-1. Java Developer
-2. Python Developer
-3. Full Stack Developer
-4. Software Engineer
+1. Java Developer Intern
+2. Python Developer Intern
+3. Web Development Intern
+4. Data Analyst Intern
 
-Required Skills:
-- Java
-- SQL
-- Spring Boot
-- React
-- Git
+Platforms:
+- Internshala
+- LinkedIn
+- Indeed
 
-Projects:
-- Student Management System
-- CareerGPT
-- E-Commerce Website
-
-Final Advice:
-Focus on Java Full Stack Development and build strong projects.
+Preparation:
+- Build Projects
+- Improve Resume
+- Practice Interviews
 """
 
-    # Interview Questions
+    # Interview
     elif "interview" in prompt or "questions" in prompt:
         return """
 1. What is OOP?
@@ -65,7 +60,7 @@ Month 6:
 Interview Preparation & Resume Building
 """
 
-    # Resume Analysis
+    # Resume
     elif "resume" in prompt:
         return """
 ATS Score: 82/100
@@ -79,6 +74,38 @@ Improvements:
 - Add GitHub Link
 - Add Internship Details
 - Improve Resume Formatting
+"""
+
+    # Career
+    elif (
+        "career" in prompt
+        or "developer" in prompt
+        or "java" in prompt
+        or "python" in prompt
+        or "skills" in prompt
+    ):
+        return """
+Recommended Careers:
+
+1. Java Developer
+2. Python Developer
+3. Full Stack Developer
+4. Software Engineer
+
+Required Skills:
+- Java
+- SQL
+- Spring Boot
+- React
+- Git
+
+Projects:
+- Student Management System
+- CareerGPT
+- E-Commerce Website
+
+Final Advice:
+Focus on Java Full Stack Development and build strong projects.
 """
 
     return "AI Service Running Successfully"

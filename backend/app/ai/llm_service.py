@@ -28,6 +28,27 @@ Final Advice:
 Focus on Java Full Stack Development and build projects.
 """
 
+    # Internship Recommendation
+    elif "internship" in prompt:
+        return """
+Recommended Internships:
+
+1. Java Developer Intern
+2. Python Developer Intern
+3. Web Development Intern
+4. Data Analyst Intern
+
+Platforms:
+- Internshala
+- LinkedIn
+- Indeed
+
+Preparation:
+- Build Projects
+- Improve Resume
+- Practice Interviews
+"""
+
     # Roadmap
     elif "roadmap" in prompt:
         return """
@@ -65,7 +86,7 @@ Interview Preparation & Resume Building
 10. Tell me about yourself.
 """
 
-    # Resume
+    # Resume Analysis
     elif "resume" in prompt:
         return """
 ATS Score: 82/100

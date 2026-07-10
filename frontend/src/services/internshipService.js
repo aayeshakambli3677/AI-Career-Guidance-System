@@ -1,8 +1,10 @@
 import api from "./api";
 
-export const getInternships = async () => {
+export const getInternships = async (data) => {
+  const response = await api.post(
+    "/internship/recommend",
+    data
+  );
 
-    const response = await api.get("/internships");
-
-    return response.data;
+  return response.data;
 };
