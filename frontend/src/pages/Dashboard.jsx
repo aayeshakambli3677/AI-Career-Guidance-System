@@ -1,5 +1,6 @@
 import "../styles/Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import StatsCard from "../components/StatsCard";
 
 function Dashboard() {
 
@@ -14,6 +15,36 @@ function Dashboard() {
         Get personalized career guidance and improve your skills.
       </p>
 
+      {/* Dashboard Statistics */}
+      <div className="stats-container">
+
+        <StatsCard
+          icon="📄"
+          title="Resume Score"
+          value="85%"
+        />
+
+        <StatsCard
+          icon="🎤"
+          title="Mock Interviews"
+          value="12"
+        />
+
+        <StatsCard
+          icon="💡"
+          title="Skills Learned"
+          value="18"
+        />
+
+        <StatsCard
+          icon="📈"
+          title="Overall Progress"
+          value="65%"
+        />
+
+      </div>
+
+      {/* Dashboard Cards */}
       <div className="dashboard-cards">
 
         <div
