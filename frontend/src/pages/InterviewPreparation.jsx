@@ -34,14 +34,19 @@ function InterviewPreparation() {
 
   const handleSubmitAnswer = async () => {
 
-    const result = await evaluateAnswer({
-      role,
-      question: questions[currentIndex],
-      answer
-    });
+  if (!answer.trim()) {
+    alert("Please enter your answer before submitting.");
+    return;
+  }
 
-    setFeedback(result.feedback);
-  };
+  const result = await evaluateAnswer({
+    role,
+    question: questions[currentIndex],
+    answer
+  });
+
+  setFeedback(result.feedback);
+};
 
   const nextQuestion = () => {
 

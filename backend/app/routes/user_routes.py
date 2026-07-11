@@ -85,18 +85,20 @@ def login_user(user: UserLogin):
 
     if not existing_user:
         db.close()
-        return {
-            "message": "User not found"
-        }
+        raise HTTPException(
+            status_code=401,
+            detail="User not found"
+        )
 
     if not pwd_context.verify(
         user.password,
         existing_user.password
     ):
         db.close()
-        return {
-            "message": "Invalid password"
-        }
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid password"
+        )
 
     token = create_access_token({
         "sub": existing_user.email

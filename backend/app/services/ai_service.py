@@ -33,214 +33,81 @@ Preparation:
 
     elif "evaluate" in prompt:
 
-        if "what is oop" in prompt:
+        score = 0
+
+        answer_length = len(prompt.strip())
+
+        # Very Short Answer
+        if answer_length < 20:
 
             return """
-Score: 8/10
+Score: 1/10
 
 Strengths:
-✔ Correct understanding of OOP.
-✔ Answer is relevant.
+✔ Attempted the answer.
 
 Weaknesses:
-✘ Too short.
-✘ Did not mention pillars of OOP.
+✘ Answer is too short.
+✘ Important concepts are missing.
 
 Improvement Suggestions:
-- Mention Encapsulation, Inheritance, Polymorphism and Abstraction.
-
-Better Sample Answer:
-
-OOP (Object-Oriented Programming) is a programming paradigm that organizes software using objects and classes. The four pillars are Encapsulation, Inheritance, Polymorphism and Abstraction.
+- Write at least 2-3 meaningful sentences.
+- Explain the concept clearly.
 """
 
-        elif "arraylist" in prompt and "linkedlist" in prompt:
+        # Short Answer
+        elif answer_length < 50:
 
             return """
-Score: 8/10
+Score: 4/10
 
 Strengths:
-✔ Relevant answer.
-✔ Correct concept.
+✔ Basic attempt made.
 
 Weaknesses:
-✘ Missing performance comparison.
+✘ Missing important details.
+✘ Explanation is incomplete.
 
 Improvement Suggestions:
-- Explain indexing speed.
-- Explain insertion and deletion performance.
-
-Better Sample Answer:
-
-ArrayList uses a dynamic array internally and provides fast random access using indexes. LinkedList uses a doubly linked list internally and is better for frequent insertions and deletions.
+- Add technical concepts.
+- Include examples.
 """
 
-        elif "jdbc" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Correct topic identified.
-
-Weaknesses:
-✘ Missing full form.
-
-Improvement Suggestions:
-- Explain database connectivity.
-
-Better Sample Answer:
-
-JDBC (Java Database Connectivity) is an API that allows Java applications to connect and interact with databases.
-"""
-
-        elif "exception" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Understands exceptions.
-
-Weaknesses:
-✘ Missing keywords.
-
-Improvement Suggestions:
-- Mention try, catch and finally.
-
-Better Sample Answer:
-
-Exception Handling is a mechanism used to handle runtime errors and maintain normal program flow using try, catch and finally blocks.
-"""
-
-        elif "spring boot" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Relevant answer.
-
-Weaknesses:
-✘ Missing features.
-
-Improvement Suggestions:
-- Mention auto configuration and embedded server.
-
-Better Sample Answer:
-
-Spring Boot simplifies Java application development by providing auto configuration, starter dependencies and embedded servers.
-"""
-
-        elif "rest api" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Correct concept.
-
-Weaknesses:
-✘ Missing HTTP methods.
-
-Improvement Suggestions:
-- Mention GET, POST, PUT and DELETE.
-
-Better Sample Answer:
-
-REST API is an architectural style used for communication between client and server applications using HTTP methods.
-"""
-
-        elif "get" in prompt and "post" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Relevant answer.
-
-Weaknesses:
-✘ Missing comparison points.
-
-Improvement Suggestions:
-- Explain usage and security differences.
-
-Better Sample Answer:
-
-GET retrieves data from the server while POST sends data to the server. POST is generally more secure because data is sent in the request body.
-"""
-
-        elif "sql join" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Correct topic.
-
-Weaknesses:
-✘ Missing join types.
-
-Improvement Suggestions:
-- Mention INNER JOIN, LEFT JOIN, RIGHT JOIN and FULL JOIN.
-
-Better Sample Answer:
-
-SQL JOIN combines rows from multiple tables based on a related column.
-"""
-
-        elif "polymorphism" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Correct concept.
-
-Weaknesses:
-✘ Missing types.
-
-Improvement Suggestions:
-- Mention method overloading and overriding.
-
-Better Sample Answer:
-
-Polymorphism allows one interface to represent multiple forms. It is achieved through method overloading and method overriding.
-"""
-
-        elif "tell me about yourself" in prompt:
-
-            return """
-Score: 8/10
-
-Strengths:
-✔ Good introduction.
-
-Weaknesses:
-✘ Missing achievements.
-
-Improvement Suggestions:
-- Mention education, skills and projects.
-
-Better Sample Answer:
-
-My name is Aayesha Kambli. I am pursuing a Diploma in Computer Engineering. I have knowledge of Java, SQL, HTML, CSS and JavaScript. I am currently learning Java Full Stack Development and have worked on projects like CareerGPT.
-"""
-
-        else:
+        # Medium Answer
+        elif answer_length < 150:
 
             return """
 Score: 7/10
 
 Strengths:
-✔ Relevant answer.
+✔ Good understanding shown.
+✔ Relevant explanation.
 
 Weaknesses:
-✘ Needs more detail.
+✘ Could include more details.
 
 Improvement Suggestions:
 - Add examples.
-- Explain concepts clearly.
+- Explain concepts more clearly.
+"""
+
+        # Detailed Answer
+        else:
+
+            return """
+Score: 9/10
+
+Strengths:
+✔ Detailed explanation.
+✔ Good technical understanding.
+✔ Well structured answer.
+
+Weaknesses:
+✘ Minor improvements possible.
+
+Improvement Suggestions:
+- Add real-world examples.
+- Improve answer presentation.
 """
 
     # =========================

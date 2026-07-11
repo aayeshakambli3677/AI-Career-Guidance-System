@@ -12,37 +12,49 @@ function Login() {
 
   const handleLogin = async () => {
 
-    try {
+  if (!email.trim()) {
+    alert("Please enter your email");
+    return;
+  }
 
-      const result = await loginUser({
-        email,
-        password
-      });
+  if (!password.trim()) {
+    alert("Please enter your password");
+    return;
+  }
 
-      console.log(result);
+  try {
 
-      localStorage.setItem(
-  "token",
-  result.access_token
-);
+    const result = await loginUser({
+      email,
+      password
+    });
 
-localStorage.setItem(
-  "profile",
-  JSON.stringify({
-    full_name: result.full_name,
-    email: result.email
-  })
-);
+    localStorage.setItem(
+      "token",
+      result.access_token
+    );
 
-      navigate("/dashboard");
+    localStorage.setItem(
+      "profile",
+      JSON.stringify({
+        full_name: result.full_name,
+        email: result.email
+      })
+    );
 
-    } catch (error) {
+    navigate("/dashboard");
 
-      console.error(error);
-      console.log("Login Failed");
+  } catch (error) {
 
+    console.error(error);
+
+    if (error.response?.data?.detail) {
+      alert(error.response.data.detail);
+    } else {
+      alert("Login Failed");
     }
-  };
+  }
+};
 
   return (
     <div className="login-page">

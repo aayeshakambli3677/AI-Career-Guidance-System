@@ -12,6 +12,21 @@ function Register() {
 
   const handleRegister = async () => {
 
+  if (!fullName.trim()) {
+    alert("Please enter your full name");
+    return;
+  }
+
+  if (!email.trim()) {
+    alert("Please enter your email");
+    return;
+  }
+
+  if (!password.trim()) {
+    alert("Please enter your password");
+    return;
+  }
+
   try {
 
     await registerUser({
@@ -23,9 +38,8 @@ function Register() {
     navigate("/");
 
   } catch (error) {
-
     console.error(error);
-
+    alert("Registration Failed");
   }
 };
 

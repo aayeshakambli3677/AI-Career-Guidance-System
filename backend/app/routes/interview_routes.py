@@ -100,6 +100,34 @@ async def mock_interview(data: InterviewRequest):
 @router.post("/evaluate")
 async def evaluate_answer(data: AnswerEvaluation):
 
+    # Empty Answer Check
+    if not data.answer.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Please enter an answer."
+        )
+
+    # Very Short Answer Check
+    if len(data.answer.strip()) < 15:
+        return {
+            "success": True,
+            "feedback": """
+Score: 1/10
+
+Strengths:
+✔ Attempted the answer.
+
+Weaknesses:
+✘ Answer is too short.
+✘ No explanation provided.
+
+Improvement Suggestions:
+- Write at least 2-3 meaningful sentences.
+- Explain the concept properly.
+- Add examples if possible.
+"""
+        }
+
     prompt = f"""
 Evaluate this answer.
 
@@ -119,7 +147,9 @@ Provide:
 """
 
     try:
+
         response = generate_response(prompt)
+
         db = SessionLocal()
 
         new_interview = Interview(
@@ -131,7 +161,8 @@ Provide:
             user_answer=data.answer,
             feedback=response,
             score=8
-            )
+        )
+
         db.add(new_interview)
         db.commit()
         db.refresh(new_interview)
