@@ -1,10 +1,40 @@
 import "../styles/Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import StatsCard from "../components/StatsCard";
+import { getDashboardData } from "../services/dashboardService";
 
 function Dashboard() {
 
   const navigate = useNavigate();
+
+  const [dashboard, setDashboard] = useState({
+    resumeScore: 0,
+    mockInterviews: 0,
+    skillsLearned: 0,
+    overallProgress: 0
+  });
+
+
+  useEffect(() => {
+
+    const fetchDashboard = async () => {
+      try {
+
+        const data = await getDashboardData();
+        setDashboard(data);
+
+      } catch (error) {
+        console.log("Dashboard Error:", error);
+      }
+    };
+
+
+    fetchDashboard();
+
+  }, []);
+
+
 
   return (
     <div className="dashboard-page">
@@ -15,37 +45,44 @@ function Dashboard() {
         Get personalized career guidance and improve your skills.
       </p>
 
-      {/* Dashboard Statistics */}
+
       <div className="stats-container">
+
 
         <StatsCard
           icon="📄"
           title="Resume Score"
-          value="85%"
+          value={`${dashboard.resumeScore}%`}
         />
+
 
         <StatsCard
           icon="🎤"
           title="Mock Interviews"
-          value="12"
+          value={dashboard.mockInterviews}
         />
+
 
         <StatsCard
           icon="💡"
           title="Skills Learned"
-          value="18"
+          value={dashboard.skillsLearned}
         />
+
 
         <StatsCard
           icon="📈"
           title="Overall Progress"
-          value="65%"
+          value={`${dashboard.overallProgress}%`}
         />
+
 
       </div>
 
-      {/* Dashboard Cards */}
+
+
       <div className="dashboard-cards">
+
 
         <div
           className="dashboard-card"
@@ -57,6 +94,7 @@ function Dashboard() {
           </p>
         </div>
 
+
         <div
           className="dashboard-card"
           onClick={() => navigate("/resume")}
@@ -66,6 +104,7 @@ function Dashboard() {
             Upload and analyze your resume.
           </p>
         </div>
+
 
         <div
           className="dashboard-card"
@@ -77,6 +116,7 @@ function Dashboard() {
           </p>
         </div>
 
+
         <div
           className="dashboard-card"
           onClick={() => navigate("/roadmap")}
@@ -86,6 +126,7 @@ function Dashboard() {
             Follow a personalized roadmap.
           </p>
         </div>
+
 
       </div>
 
