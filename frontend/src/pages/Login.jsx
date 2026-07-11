@@ -22,18 +22,24 @@ function Login() {
       console.log(result);
 
       localStorage.setItem(
-        "token",
-        result.access_token
-      );
+  "token",
+  result.access_token
+);
 
-      alert("Login Successful");
+localStorage.setItem(
+  "profile",
+  JSON.stringify({
+    full_name: result.full_name,
+    email: result.email
+  })
+);
 
       navigate("/dashboard");
 
     } catch (error) {
 
       console.error(error);
-      alert("Login Failed");
+      console.log("Login Failed");
 
     }
   };

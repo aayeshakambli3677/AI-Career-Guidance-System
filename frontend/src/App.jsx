@@ -1,5 +1,3 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
 
@@ -21,6 +19,16 @@ import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
 import InternshipRecommendation from "./pages/InternshipRecommendation";
 import ProgressTracker from "./pages/ProgressTracker";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+const ProtectedRoute = ({ children }) => {
+
+  const token = localStorage.getItem("token");
+
+  return token
+    ? children
+    : <Navigate to="/" />;
+};
 function App() {
   return (
     <BrowserRouter>
@@ -30,44 +38,137 @@ function App() {
         {/* Pages with Sidebar */}
         <Route element={<MainLayout />}>
 
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/resume" element={<ResumeAnalysis />} />
-          <Route path="/interviewPreparation" element={<InterviewPreparation />} />
-          <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/progress" element={<ProgressTracker />} />
-          <Route path="/resumeUpload" element={<ResumeUpload />} />
-          <Route path="/resume-analysis" element={<ResumeAnalysis />} />
-          <Route
-            path="/internships"
-            element={<InternshipRecommendation />}
-          />
-          <Route
-            path="/skills"
-            element={<SkillGapAnalysis />}
-          />
-          <Route
-            path="/interviewPreparation"
-            element={<InterviewPreparation />}
-          />
-          <Route
-            path="/settings"
-            element={<Settings />}
-          />
+  <Route
+    path="/dashboard"
+    element={
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    }
+  />
 
-          <Route
-            path="/edit-profile"
-            element={<EditProfile />}
-          />
+  <Route
+    path="/profile"
+    element={
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
+    }
+  />
 
-        </Route>
+  <Route
+    path="/career"
+    element={
+      <ProtectedRoute>
+        <Career />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/resume"
+    element={
+      <ProtectedRoute>
+        <ResumeAnalysis />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/interviewPreparation"
+    element={
+      <ProtectedRoute>
+        <InterviewPreparation />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/roadmap"
+    element={
+      <ProtectedRoute>
+        <Roadmap />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/progress"
+    element={
+      <ProtectedRoute>
+        <ProgressTracker />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/resumeUpload"
+    element={
+      <ProtectedRoute>
+        <ResumeUpload />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/resume-analysis"
+    element={
+      <ProtectedRoute>
+        <ResumeAnalysis />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/internships"
+    element={
+      <ProtectedRoute>
+        <InternshipRecommendation />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/skills"
+    element={
+      <ProtectedRoute>
+        <SkillGapAnalysis />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/settings"
+    element={
+      <ProtectedRoute>
+        <Settings />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/edit-profile"
+    element={
+      <ProtectedRoute>
+        <EditProfile />
+      </ProtectedRoute>
+    }
+  />
+
+</Route>
 
 
         {/* Login/Register pages */}
         <Route element={<AuthLayout />}>
 
-          <Route path="/" element={<Login />} />
+          <Route
+ path="/"
+ element={
+   localStorage.getItem("token")
+     ? <Navigate to="/dashboard" />
+     : <Login />
+ }
+/>
           <Route path="/register" element={<Register />} />
 
         </Route>

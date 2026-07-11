@@ -109,7 +109,8 @@ def login_user(user: UserLogin):
         "access_token": token,
         "token_type": "bearer",
         "user_id": existing_user.id,
-        "email": existing_user.email
+        "email": existing_user.email,
+        "full_name": existing_user.full_name
     }
 
 @router.get("/me")

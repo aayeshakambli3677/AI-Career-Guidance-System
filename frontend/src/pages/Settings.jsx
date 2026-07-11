@@ -34,19 +34,12 @@ function Settings() {
 
   const toggleNotifications = () => {
     setNotifications(!notifications);
-
-    alert(
-      !notifications
-        ? "Notifications Enabled"
-        : "Notifications Disabled"
-    );
   };
 
   const handleLogout = () => {
 
     localStorage.removeItem("token");
-
-    alert("Logged Out Successfully");
+    localStorage.removeItem("profile");
 
     navigate("/");
   };
