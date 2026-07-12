@@ -2,7 +2,7 @@ import "../styles/Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import StatsCard from "../components/StatsCard";
-import { getDashboardData } from "../services/dashboardService";
+import { getDashboardData } from "../services/Dashboard_service";
 
 function Dashboard() {
 
