@@ -15,13 +15,8 @@ from app.routes.resume_routes import router as resume_router
 from app.routes.auth_routes import router as auth_router
 from app.routes.roadmap_routes import router as roadmap_router
 from app.routes import internship_routes
-<<<<<<< HEAD
-from app.routes.dashboard_routes import router as dashboard_router
 from app.models.progress import Progress
-
-=======
 # from app.routes.dashboard_routes import router as dashboard_router
->>>>>>> 971fad64266e1a40d464acaf0b3b92d81b17dbd9
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
