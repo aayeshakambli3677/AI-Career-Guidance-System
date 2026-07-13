@@ -9,6 +9,10 @@ import InterviewPreparation from "./pages/InterviewPreparation";
 import Roadmap from "./pages/Roadmap";
 import Login from "./pages/Login";
 import CareerReCommendation from "./pages/careerRecommendation";
+<<<<<<< HEAD
+=======
+import InternshipRecommendation from "./pages/InternshipRecommendation";
+>>>>>>> 971fad64266e1a40d464acaf0b3b92d81b17dbd9
 import Notfound from "./pages/Notfound";
 import Register from "./pages/Register";
 import ResumeUpload from "./pages/ResumeUpload";
@@ -16,9 +20,9 @@ import SkillGapAnalysis from "./pages/SkillGapAnalysis";
 import Resume from "./pages/Resume";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
-import InternshipRecommendation from "./pages/InternshipRecommendation";
 import ProgressTracker from "./pages/ProgressTracker";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 
 const ProtectedRoute = ({ children }) => {
 
@@ -126,7 +130,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+<<<<<<< HEAD
 
+          <Route
+            path="/skills"
+            element={
+              <ProtectedRoute>
+                <SkillGapAnalysis />
+=======
           <Route
             path="/skills"
             element={
@@ -141,10 +152,28 @@ function App() {
             element={
               <ProtectedRoute>
                 <Settings />
+>>>>>>> 971fad64266e1a40d464acaf0b3b92d81b17dbd9
               </ProtectedRoute>
             }
           />
 
+          <Route
+<<<<<<< HEAD
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+=======
+            path="/edit-profile"
+            element={
+              <ProtectedRoute>
+                <EditProfile />
+>>>>>>> 971fad64266e1a40d464acaf0b3b92d81b17dbd9
+              </ProtectedRoute>
+            }
+          />
+
+<<<<<<< HEAD
           <Route
             path="/edit-profile"
             element={
@@ -154,6 +183,8 @@ function App() {
             }
           />
 
+=======
+>>>>>>> 971fad64266e1a40d464acaf0b3b92d81b17dbd9
         </Route>
 
 
@@ -168,6 +199,10 @@ function App() {
                 : <Login />
             }
           />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 971fad64266e1a40d464acaf0b3b92d81b17dbd9
           <Route path="/register" element={<Register />} />
 
         </Route>

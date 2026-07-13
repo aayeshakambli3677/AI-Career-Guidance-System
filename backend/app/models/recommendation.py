@@ -16,27 +16,22 @@ from app.database.base import Base
 class Recommendation(Base):
     __tablename__ = "recommendations"
 
-    # Primary Key
     id = Column(Integer, primary_key=True, index=True)
 
-    # User Reference
     user_id = Column(
         Integer,
         ForeignKey("users.id"),
-        nullable=False,
-        index=True
+        nullable=False
     )
 
-    # Career Recommendation Details
     career_title = Column(
         String(150),
-        nullable=False,
-        index=True
+        nullable=False
     )
 
     match_score = Column(
         Float,
-        nullable=False
+        default=0.0
     )
 
     description = Column(
@@ -76,30 +71,23 @@ class Recommendation(Base):
 
     recommendation_status = Column(
         String(20),
-        default="active",
-        nullable=False
+        default="active"
     )
 
-    # Audit Fields
     created_at = Column(
         DateTime,
-        default=datetime.utcnow,
-        nullable=False
+        default=datetime.utcnow
     )
 
     updated_at = Column(
         DateTime,
         default=datetime.utcnow,
-        onupdate=datetime.utcnow,
-        nullable=False
+        onupdate=datetime.utcnow
     )
 
     def __repr__(self):
         return (
-            f"<Recommendation("
-            f"id={self.id}, "
-            f"user_id={self.user_id}, "
+            f"<Recommendation(id={self.id}, "
             f"career_title='{self.career_title}', "
-            f"match_score={self.match_score}"
-            f")>"
+            f"match_score={self.match_score})>"
         )

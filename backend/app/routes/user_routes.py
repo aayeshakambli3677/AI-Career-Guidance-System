@@ -44,6 +44,42 @@ def create_access_token(data: dict):
 
 @router.post("/create")
 def create_user(user: UserCreate):
+    db = SessionLocal()
+
+    try:
+        existing_user = db.query(User).filter(
+            User.email == user.email
+        ).first()
+
+        if existing_user:
+            raise HTTPException(
+                status_code=400,
+                detail="Email already registered"
+            )
+
+        hashed_password = pwd_context.hash(user.password)
+
+        new_user = User(
+            full_name=user.full_name,
+            email=user.email,
+            password=hashed_password
+        )
+
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
+
+        return {
+            "message": "User created successfully",
+            "user_id": new_user.id
+        }
+
+    except Exception as e:
+        print("ERROR:", repr(e))
+        raise
+
+    finally:
+        db.close()
 
     db = SessionLocal()
 

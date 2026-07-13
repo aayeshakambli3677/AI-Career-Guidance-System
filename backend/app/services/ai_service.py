@@ -33,12 +33,15 @@ Preparation:
 
     elif "evaluate" in prompt:
 
-        score = 0
+        answer_text = ""
 
-        answer_length = len(prompt.strip())
+        if "answer:" in prompt:
+            answer_text = prompt.split("answer:")[-1].strip()
+
+        answer_length = len(answer_text.split())
 
         # Very Short Answer
-        if answer_length < 20:
+        if answer_length <= 2:
 
             return """
 Score: 1/10
@@ -48,15 +51,16 @@ Strengths:
 
 Weaknesses:
 ✘ Answer is too short.
-✘ Important concepts are missing.
+✘ No meaningful explanation provided.
 
 Improvement Suggestions:
-- Write at least 2-3 meaningful sentences.
-- Explain the concept clearly.
+- Explain the concept properly.
+- Add technical details.
+- Give examples.
 """
 
         # Short Answer
-        elif answer_length < 50:
+        elif answer_length <= 8:
 
             return """
 Score: 4/10
@@ -65,30 +69,30 @@ Strengths:
 ✔ Basic attempt made.
 
 Weaknesses:
-✘ Missing important details.
-✘ Explanation is incomplete.
+✘ Very limited explanation.
+✘ Important concepts missing.
 
 Improvement Suggestions:
-- Add technical concepts.
-- Include examples.
+- Explain the topic in detail.
+- Include definitions and examples.
 """
 
         # Medium Answer
-        elif answer_length < 150:
+        elif answer_length <= 20:
 
             return """
 Score: 7/10
 
 Strengths:
 ✔ Good understanding shown.
-✔ Relevant explanation.
+✔ Relevant answer.
 
 Weaknesses:
-✘ Could include more details.
+✘ Could include more technical details.
 
 Improvement Suggestions:
 - Add examples.
-- Explain concepts more clearly.
+- Explain key concepts more clearly.
 """
 
         # Detailed Answer
@@ -100,14 +104,14 @@ Score: 9/10
 Strengths:
 ✔ Detailed explanation.
 ✔ Good technical understanding.
-✔ Well structured answer.
+✔ Well-structured answer.
 
 Weaknesses:
 ✘ Minor improvements possible.
 
 Improvement Suggestions:
 - Add real-world examples.
-- Improve answer presentation.
+- Mention advanced concepts if applicable.
 """
 
     # =========================
