@@ -120,7 +120,7 @@ function App() {
           />
 
           <Route
-            path="/internship"
+            path="/internships"
             element={
               <ProtectedRoute>
                 <InternshipRecommendation />
