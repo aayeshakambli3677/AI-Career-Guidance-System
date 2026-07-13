@@ -17,10 +17,8 @@ from app.routes.roadmap_routes import router as roadmap_router
 from app.routes import internship_routes
 from app.routes.dashboard_routes import router as dashboard_router
 
-
 # Create database tables
 Base.metadata.create_all(bind=engine)
-
 
 app = FastAPI(
     title="CareerGPT API",
@@ -28,20 +26,21 @@ app = FastAPI(
     version="1.0.0"
 )
 
-
 # =========================
 # CORS CONFIGURATION
 # =========================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173"
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # =========================
 # ROOT ENDPOINT
@@ -53,7 +52,6 @@ def root():
         "docs": "/docs"
     }
 
-
 # =========================
 # HEALTH CHECK
 # =========================
@@ -62,7 +60,6 @@ def health():
     return {
         "status": "healthy"
     }
-
 
 # =========================
 # INCLUDE ROUTES
@@ -76,14 +73,12 @@ app.include_router(roadmap_router)
 app.include_router(internship_routes.router)
 app.include_router(dashboard_router)
 
-
 # =========================
 # STARTUP EVENT
 # =========================
 @app.on_event("startup")
 def startup_event():
     print("🚀 CareerGPT Backend Started Successfully")
-
 
 # =========================
 # SHUTDOWN EVENT
