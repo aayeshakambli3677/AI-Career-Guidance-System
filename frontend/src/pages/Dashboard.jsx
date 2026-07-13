@@ -1,40 +1,9 @@
 import "../styles/Dashboard.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import StatsCard from "../components/StatsCard";
-import { getDashboardData } from "../services/Dashboard_service";
 
 function Dashboard() {
 
   const navigate = useNavigate();
-
-  const [dashboard, setDashboard] = useState({
-    resumeScore: 0,
-    mockInterviews: 0,
-    skillsLearned: 0,
-    overallProgress: 0
-  });
-
-
-  useEffect(() => {
-
-    const fetchDashboard = async () => {
-      try {
-
-        const data = await getDashboardData();
-        setDashboard(data);
-
-      } catch (error) {
-        console.log("Dashboard Error:", error);
-      }
-    };
-
-
-    fetchDashboard();
-
-  }, []);
-
-
 
   return (
     <div className="dashboard-page">
@@ -45,44 +14,7 @@ function Dashboard() {
         Get personalized career guidance and improve your skills.
       </p>
 
-
-      <div className="stats-container">
-
-
-        <StatsCard
-          icon="📄"
-          title="Resume Score"
-          value={`${dashboard.resumeScore}%`}
-        />
-
-
-        <StatsCard
-          icon="🎤"
-          title="Mock Interviews"
-          value={dashboard.mockInterviews}
-        />
-
-
-        <StatsCard
-          icon="💡"
-          title="Skills Learned"
-          value={dashboard.skillsLearned}
-        />
-
-
-        <StatsCard
-          icon="📈"
-          title="Overall Progress"
-          value={`${dashboard.overallProgress}%`}
-        />
-
-
-      </div>
-
-
-
       <div className="dashboard-cards">
-
 
         <div
           className="dashboard-card"
@@ -94,7 +26,6 @@ function Dashboard() {
           </p>
         </div>
 
-
         <div
           className="dashboard-card"
           onClick={() => navigate("/resume")}
@@ -104,7 +35,6 @@ function Dashboard() {
             Upload and analyze your resume.
           </p>
         </div>
-
 
         <div
           className="dashboard-card"
@@ -116,7 +46,6 @@ function Dashboard() {
           </p>
         </div>
 
-
         <div
           className="dashboard-card"
           onClick={() => navigate("/roadmap")}
@@ -126,7 +55,6 @@ function Dashboard() {
             Follow a personalized roadmap.
           </p>
         </div>
-
 
       </div>
 

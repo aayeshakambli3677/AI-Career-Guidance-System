@@ -9,7 +9,6 @@ import InterviewPreparation from "./pages/InterviewPreparation";
 import Roadmap from "./pages/Roadmap";
 import Login from "./pages/Login";
 import CareerReCommendation from "./pages/careerRecommendation";
-import IntershipRecommendation from "./pages/InternshipRecommendation";
 import Notfound from "./pages/Notfound";
 import Register from "./pages/Register";
 import ResumeUpload from "./pages/ResumeUpload";
@@ -38,137 +37,137 @@ function App() {
         {/* Pages with Sidebar */}
         <Route element={<MainLayout />}>
 
-  <Route
-    path="/dashboard"
-    element={
-      <ProtectedRoute>
-        <Dashboard />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/profile"
-    element={
-      <ProtectedRoute>
-        <Profile />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/career"
-    element={
-      <ProtectedRoute>
-        <Career />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/career"
+            element={
+              <ProtectedRoute>
+                <Career />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/resume"
-    element={
-      <ProtectedRoute>
-        <ResumeAnalysis />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/resume"
+            element={
+              <ProtectedRoute>
+                <ResumeAnalysis />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/interviewPreparation"
-    element={
-      <ProtectedRoute>
-        <InterviewPreparation />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/interviewPreparation"
+            element={
+              <ProtectedRoute>
+                <InterviewPreparation />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/roadmap"
-    element={
-      <ProtectedRoute>
-        <Roadmap />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/roadmap"
+            element={
+              <ProtectedRoute>
+                <Roadmap />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/progress"
-    element={
-      <ProtectedRoute>
-        <ProgressTracker />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/progress"
+            element={
+              <ProtectedRoute>
+                <ProgressTracker />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/resumeUpload"
-    element={
-      <ProtectedRoute>
-        <ResumeUpload />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/resumeUpload"
+            element={
+              <ProtectedRoute>
+                <ResumeUpload />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/resume-analysis"
-    element={
-      <ProtectedRoute>
-        <ResumeAnalysis />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/resume-analysis"
+            element={
+              <ProtectedRoute>
+                <ResumeAnalysis />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/internships"
-    element={
-      <ProtectedRoute>
-        <InternshipRecommendation />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/internships"
+            element={
+              <ProtectedRoute>
+                <InternshipRecommendation />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/skills"
-    element={
-      <ProtectedRoute>
-        <SkillGapAnalysis />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/skills"
+            element={
+              <ProtectedRoute>
+                <SkillGapAnalysis />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/settings"
-    element={
-      <ProtectedRoute>
-        <Settings />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
 
-  <Route
-    path="/edit-profile"
-    element={
-      <ProtectedRoute>
-        <EditProfile />
-      </ProtectedRoute>
-    }
-  />
+          <Route
+            path="/edit-profile"
+            element={
+              <ProtectedRoute>
+                <EditProfile />
+              </ProtectedRoute>
+            }
+          />
 
-</Route>
+        </Route>
 
 
         {/* Login/Register pages */}
         <Route element={<AuthLayout />}>
 
           <Route
- path="/"
- element={
-   localStorage.getItem("token")
-     ? <Navigate to="/dashboard" />
-     : <Login />
- }
-/>
+            path="/"
+            element={
+              localStorage.getItem("token")
+                ? <Navigate to="/dashboard" />
+                : <Login />
+            }
+          />
           <Route path="/register" element={<Register />} />
 
         </Route>

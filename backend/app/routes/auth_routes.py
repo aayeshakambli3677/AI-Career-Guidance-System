@@ -17,7 +17,7 @@ users_db = {}
 # -------------------------
 # PASSWORD HASHING
 # -------------------------
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
 # -------------------------
 # JWT SETTINGS

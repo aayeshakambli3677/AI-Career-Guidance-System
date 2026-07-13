@@ -16,6 +16,7 @@ from app.routes.auth_routes import router as auth_router
 from app.routes.roadmap_routes import router as roadmap_router
 from app.routes import internship_routes
 from app.routes.dashboard_routes import router as dashboard_router
+from app.models.progress import Progress
 
 
 # Create database tables
